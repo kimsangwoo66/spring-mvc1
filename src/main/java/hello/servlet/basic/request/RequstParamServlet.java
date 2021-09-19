@@ -37,7 +37,12 @@ public class RequstParamServlet extends HttpServlet {
         for (String name : usernames) {
             System.out.println("username = " + name);
         }
-
+        //content type은 웹브라우저가 만들어 주는것이다.
+        //html 폼 데이터 전송은 post전송이다 - 저장
+        //request.getparameter은 http 요청 메시지를 통해 클라이언트에서 서버로 데이터를 전송한다.
+        //get- 쿼리 파라미터, post - HTML Form 형식: 데이터를 전달하면 HTTP 메시지에 해당 데이터를 포함해서 보내기 떄문에
+        //바디에 포함된 데이터가 어떤 형식인지 content-type을 꼭 지정해야함
+        //Http message body  전부 지원
         response.getWriter().write("ok");
 
     }

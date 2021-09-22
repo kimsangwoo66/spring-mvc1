@@ -48,7 +48,7 @@ public class FrontControllerServletV3 extends HttpServlet {
 
         //paramMap
         //메소드를 뽑아낸 상태
-        Map<String, String> paramMap = getStringStringMap(request);
+        Map<String, String> paramMap = createParamMap(request);
 
         //cmd opt b = 참조한 구현체들에 대해 확인할 수있다.
         //각각의 컨트롤러는 myview객체만 생성해서 반환하면 된다.
@@ -73,7 +73,7 @@ public class FrontControllerServletV3 extends HttpServlet {
     }
 
     //cmd + opt + m = 메소드 추출 , 비슷한 레벨환경으로 맞추기 위해서
-    private Map<String, String> getStringStringMap(HttpServletRequest request) {
+    private Map<String, String> createParamMap(HttpServletRequest request) {
         Map<String, String> paramMap = new HashMap<>();
         //paramMap 으로 모든 파라미터값을 다 꺼내온다.
         request.getParameterNames().asIterator()

@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.sql.rowset.serial.SerialException;
 import java.io.IOException;
+import java.util.Map;
 
 public class MyView {
     private String viewPath;
@@ -21,4 +22,17 @@ public class MyView {
         dispatcher.forward(request,response);
     }
 
+    public void render(Map<String, Object> model, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        //자바 파일문법, 변수명 key, value로 해서 루프를 돌리는것
+        //모델에있는 데이터를 request attribute로 바꾼다는 의미
+        modelToRequestAttribute(model, request);
+        RequestDispatcher dispatcher = request.getRequestDispatcher(viewPath);
+        //jsp가 자동으로 렌더링 된다.
+        dispatcher.forward(request,response);
+
+    }
+    // alt + opt + m 으로 뽑아냄
+    private void modelToRequestAttribute(Map<String, Object> model, HttpServletRequest request) {
+        model.forEach((key, value) -> request.setAttribute(key, value));
+    }
 }
